@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cchospital 
+  name: cchospital-deployment
+  namespace: cchospital
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cchospital
+  template:
+    metadata:
+      labels:
+        app: cchospital
+    spec:
+      containers:
+      - image: project:2 
+        imagePullPolicy: Never
+        name: cchospital
+        ports:
+          - containerPort: 80
+
+        resources: 
+          requests:
+            cpu: 0.1
+            memory: 1Mi
+          limits:
+            cpu: 0.1
+            memory: 1Mi
